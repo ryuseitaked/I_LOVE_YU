@@ -1,0 +1,5 @@
+<h1>Users#out</h1>
+<p>Find me in app/views/users/out.html.erb</p>
+
+<%= link_to "退会しない", user_path %>
+<%= link_to "退会する", withdraw_user_path, method: :patch, data: {confirm: "本当に退会してもよろしいですか？"} %>

@@ -1,0 +1,95 @@
+<section class="hero is-success">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        ♨️施設詳細♨️
+      </h1>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-7">
+        <div class="card">
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <%= attachment_image_tag @article, :image, fallback: "no-image.png" %>
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="media">
+              <div class="media-content">
+                施設名
+                <p class="title is-4"><%= @article.title %></p>
+              </div>
+            </div>
+            <div class="media">
+              <div class="media-content">
+                住所
+                <p class="title is-4"><%= @article.address %></p>
+              </div>
+            </div>
+            <div class="media">
+              <div class="media-content">
+                電話番号
+                <p class="title is-4"><%= @article.telephone_number %></p>
+              </div>
+            </div>
+            <div class="media">
+              <div class="media-content">
+                ホームページ
+                <p class="title is-4"><%= raw Rinku.auto_link(h(@article.url)) %></p>
+              </div>
+            </div>
+            <div class="content">
+              <table class="table is-narrow">
+                <tr>
+                  <th>補足</th>
+                </tr>
+                <tr>
+                  <td><%= simple_format @article.introduction %></td>
+                </tr>
+              </table>
+              <% if @article.user.id == current_user.id %>
+                <%= link_to "編集画面へ", edit_article_path(@article), class: "button is-success" %>
+              <% end %>
+            </div>
+            <div class="card-content">
+              <div class="content average-score">
+                <div class="star-rating mb-2">
+                 <div class="star-rating-front" style="width: <%= @article.review_score_percentage %>%">★★★★★</div>
+                 <div class="star-rating-back">★★★★★</div>
+                </div>
+                <div class="average-score-display ml-3 pt-2">
+                  <%= @article.avg_score %>点（<%= @article.reviews.count %>件のレビュー）
+                </div>
+              </div>
+              <%= render 'reviews/form', review: @review, article: @article %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="column is-4">
+        <article class="panel is-link">
+          <p class="panel-heading">
+            By <%= @article.user.name %>
+          </p>
+          <div class="panel-block">
+            <p class="control">
+              <%= @article.user.profile %>
+            </p>
+          </div>
+          <%= link_to user_path(@article.user), class: "panel-block" do %>
+            <span class="panel-icon">
+              <i class="fas fa-user" aria-hidden="true"></i>
+            </span>
+            <%= @article.user.name %> さんのページへ
+          <% end %>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
