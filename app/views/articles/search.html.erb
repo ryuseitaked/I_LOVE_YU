@@ -1,0 +1,65 @@
+<section class="hero is-success">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        ♨検索結果♨️
+      </h1>
+    </div>
+  </div>
+</section>
+
+<table>
+  <tbody>
+
+    <section class="section">
+      <div class="container">
+        <div class="columns is-multiline">
+          <% @results.each do |article| %>
+          <div class="column is-4">
+            <div class="card">
+              <div class="card-image">
+               <figure class="image is-4by3">
+                <%= link_to article_path(article) do %>
+                <!-- 'article'から'@article'に直したら反映された-->
+                  <%= attachment_image_tag article, :image, format: 'jpeg', size: "100x100", fallback: "no-image.png" %>
+                <% end %>
+               </figure>
+              </div>
+              <div class="card-content">
+                <div class="media">
+                  <div class="media-content">
+                    <div class="title"><%= article.title %></div>
+                  </div>
+                </div>
+
+                <div class="content average-score">
+                  <div class="star-rating mb-2">
+                    <div class="star-rating-front" style="width: <%= article.review_score_percentage %>%">★★★★★</div>
+                     <div class="star-rating-back">★★★★★</div>
+                  </div>
+                  <div class="average-score-display ml-3 pt-2">
+                  <%= article.avg_score %>点（<%= article.reviews.count %>件のレビュー）
+                  </div>
+                </div>
+                <div class='card-footer'>
+                  <%= link_to article_reviews_path(article), class: "button card-footer-item" do %>
+                  口コミを見る
+                  <% end %>
+                  <%= link_to article_path(article), class: "button card-footer-item" do %>
+                  口コミを書く
+                  <% end %>
+                </div>
+
+                <div class="content">
+                  <time><%= article.updated_at.strftime("%Y-%m-%d %H:%M") %></time>更新日
+                </div>
+              </div>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </section>
+
+  </tbody>
+</table>

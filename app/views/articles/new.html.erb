@@ -36,8 +36,28 @@
           </div>
 
           <div class="field">
-            <%= f.label :address, "住所", class: "label" %>
-            <%= f.text_field :address, class: "input" %>
+            <%= f.label :postal_code, "郵便番号", class: "label" %><br>
+            <%= f.text_field :postal_code, autocomplete: "postal_code", id: "article_postal_code" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :prefecture_code, "都道府県", class: "label" %><br>
+            <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all,  :name, :name, autocomplete: "prefecture_code", id: "article_prefecture_code" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :city, "ご住所１（市区町村）", class: "label" %><br>
+            <%= f.text_field :city, autocomplete: "city", id: "article_city"  %>
+          </div>
+
+          <div class="field">
+            <%= f.label :street, "ご住所２（町名、番地）", class: "label" %><br>
+            <%= f.text_field :street, autocomplete: "street", id: "article_street"  %>
+          </div>
+
+          <div class="field">
+            <%= f.label :other_address, "その他", class: "label" %><br>
+            <%= f.text_field :other_address, class: "input" %>
           </div>
 
           <div class="field">

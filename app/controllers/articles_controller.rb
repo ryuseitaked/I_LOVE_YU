@@ -3,6 +3,9 @@ class ArticlesController < ApplicationController
   #非ログインユーザーへのアクセス制限
   before_action :authenticate_user!, except: [:index,:show]
 
+  #ワードで検索機能
+  before_action :set_search, only: [:index, :search]
+
   def index
     @articles = Article.all
   end
@@ -24,6 +27,7 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id])
     @review = Review.new
+    gon.article = @article
   end
 
   def edit
@@ -48,9 +52,23 @@ class ArticlesController < ApplicationController
     redirect_to user_path(article.user), notice: '投稿を削除しました'
   end
 
+  #検索機能
+  def search
+    @results = @search.result
+  end
+
   private
+
+
+  #ransackメソッド:送られてきたパラメーターを元にテーブルからデータを検索するメソッド
+  #resultメソッド:ransackメソッドで取得したデータを
+  #ActiveRecord_Relationのオブジェクトに変換するメソッド
+  def set_search
+    @search = Article.ransack(params[:q])
+  end
+
   def article_params
-    params.require(:article).permit(:title,:image,:address,:url,:introduction,:telephone_number)
+    params.require(:article).permit(:title,:image,:postal_code,:prefecture_code,:city,:street,:other_address,:url,:introduction,:telephone_number)
   end
 
 end

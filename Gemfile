@@ -72,4 +72,12 @@ gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 gem 'kaminari','~> 1.2.1'
 gem 'bulma-rails'
-gem 'rinku'
+gem 'rinku' # 'url'にリンクをかける
+gem 'ransack' # 検索機能
+gem 'jp_prefecture' # 都道府県コードから都道府県名を変換するgem
+gem 'jquery-rails' # RailsでjQueryを使えるようにするgem
+gem 'active_hash'
+gem 'haml-rails'
+gem 'dotenv-rails'
+gem 'gon' #コントローラーで定義したインスタンス変数をビューのJavaScript内で使用出来る様にする
+gem 'geocoder' #住所から緯度経度を算出する

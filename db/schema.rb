@@ -16,7 +16,13 @@ ActiveRecord::Schema.define(version: 2021_05_18_025522) do
     t.string "title"
     t.string "image_id"
     t.text "introduction"
-    t.text "address"
+    t.integer "postal_code", null: false
+    t.string "prefecture_code", null: false
+    t.string "city", null: false
+    t.string "street", null: false
+    t.string "other_address"
+    t.float "latitude"
+    t.float "longitude"
     t.string "telephone_number"
     t.text "url"
     t.integer "user_id"

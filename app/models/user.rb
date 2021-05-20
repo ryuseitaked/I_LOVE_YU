@@ -11,6 +11,7 @@ class User < ApplicationRecord
 
 
   validates :name, presence: true
+
   #ログイン時に退会済みのユーザーが同じアカウントでログイン出来ないようにする。
   # true = ログインユーザーが有効な状態（退会していない）
   def active_for_authentication?
