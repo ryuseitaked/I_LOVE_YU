@@ -24,6 +24,11 @@
                 施設名
                 <p class="title is-4"><%= @article.title %></p>
               </div>
+              <!-- いいね機能 Ajax -->
+              <div id="favorites_buttons_<%= @article.id %>">
+                <%= render partial: 'favorites/favorite', locals: { article: @article} %>
+              </div>
+              <!--ここまで -->
             </div>
             <div class="media">
               <div class="media-content">
@@ -53,8 +58,10 @@
                   <td><%= simple_format @article.introduction %></td>
                 </tr>
               </table>
+              <% if user_signed_in? %>
               <% if @article.user.id == current_user.id %>
                 <%= link_to "編集画面へ", edit_article_path(@article), class: "button is-success" %>
+              <% end %>
               <% end %>
             </div>
             <div class="card-content">
@@ -91,7 +98,7 @@
           <% end %>
         </article>
       </div>
-      
+
       <div id="map"></div>
 
 

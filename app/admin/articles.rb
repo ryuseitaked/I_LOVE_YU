@@ -20,6 +20,7 @@ ActiveAdmin.register Article do
       f.input :other_address
       f.input :telephone_number
       f.input :url
+      f.input :introduction
     end
     f.actions
   end

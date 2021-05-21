@@ -1,0 +1,3 @@
+<!-- favorites_buttons_< %= @barticle.id %>この部分のHTMLだけ、renderで部分的に更新するという処理です -->
+
+$('#favorites_buttons_<%= @article.id %>').html("<%= j(render partial: 'favorites/favorite', locals: {article: @article}) %>");

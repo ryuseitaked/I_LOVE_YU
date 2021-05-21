@@ -2,6 +2,7 @@ class Article < ApplicationRecord
 
   belongs_to :user
   has_many :reviews, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   attachment :image
 
@@ -27,11 +28,16 @@ class Article < ApplicationRecord
     validates :url
   end
 
+  # ユーザーが「いいね」を押しているかどうかを判別する
+  def favorited_by?(artcle)
+    favorites.where(user_id: user.id).exists?
+  end
+
   # 'address'にまとめ
   def address
     self.prefecture_code + self.city + self.street + self.other_address
   end
-  
+
   # カラムのデータをaddressという変数にまとめる
   def address
     [self.prefecture_code,self.city,self.street].compact.join()
