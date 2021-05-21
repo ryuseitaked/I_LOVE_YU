@@ -81,3 +81,4 @@ gem 'haml-rails'
 gem 'dotenv-rails'
 gem 'gon' #コントローラーで定義したインスタンス変数をビューのJavaScript内で使用出来る様にする
 gem 'geocoder' #住所から緯度経度を算出する
+gem 'activeadmin' # 管理者
