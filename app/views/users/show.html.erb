@@ -63,7 +63,11 @@
             <div class="card-content">
              <div class="media">
               <div class="media-content">
-                <p class="title is-4"><%= article.title %></p>
+                <div class="title">
+                  <%= link_to article_path(article) do%>
+                  <%= article.title %>
+                  <% end %>
+                </div>
               </div>
              </div>
               <div class="media">

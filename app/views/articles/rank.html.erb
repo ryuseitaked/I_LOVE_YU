@@ -28,7 +28,11 @@
               <div class="card-content">
                 <div class="media">
                   <div class="media-content">
-                    <div class="title"><%= article.title %></div>
+                    <div class="title">
+                      <%= link_to article_path(article) do%>
+                      <%= article.title %>
+                      <% end %>
+                    </div>
                     <i class="fas fa-heart"></i>
                     <%= article.favorites.count %>
                   </div>

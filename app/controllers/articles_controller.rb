@@ -57,12 +57,17 @@ class ArticlesController < ApplicationController
   def search
     @results = @search.result
   end
-  
+
   def rank
      # イイね順にランキング形式で表示する
     @all_ranks = Article.find(Favorite.group(:article_id).order('count(article_id) desc').limit(9).pluck(:article_id))
   end
-  
+
+  # 現在地から検索
+  def map
+    gon.articles = Article.all
+  end
+
   private
 
 

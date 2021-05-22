@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     collection do
       get 'search'
       get 'rank'
+      get 'map'
     end
     resource :favorites, only: [:create, :destroy]
     resources :reviews, only: [:index, :create]

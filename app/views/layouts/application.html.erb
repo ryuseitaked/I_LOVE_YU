@@ -47,6 +47,9 @@
           <div class="navbar-item">
             <%= link_to "♨ランキング♨️️", rank_articles_path, class: "navbar-item button is-warning is-light" %>
           </div>
+          <div class="navbar-item">
+            <%= link_to "♨周辺施設を探す♨️️", map_articles_path, class: "navbar-item button is-warning is-light" %>
+          </div>
 
           <div class="navbar-end">
             <div class="navbar-item">
@@ -69,6 +72,10 @@
           <div class="navbar-item">
             <%= link_to "♨ランキング♨️️", rank_articles_path, class: "navbar-item button is-warning is-light" %>
           </div>
+          <div class="navbar-item">
+            <%= link_to "♨周辺施設を探す♨️️", map_articles_path, class: "navbar-item button is-warning is-light" %>
+          </div>
+
           <div class="navbar-end">
             <div class="navbar-item">
               <div class="field is-grouped">
@@ -85,5 +92,8 @@
       <% end %>
     </nav>
    <%= yield %>
+   <footer>
+    <span class="text-muted">©2021 I LOVE ♨️ゆ♨️ All Rights Reserved.</span>
+  </footer>
   </body>
 </html>
