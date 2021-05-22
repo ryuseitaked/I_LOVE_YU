@@ -17,7 +17,7 @@
           <% @all_ranks.each.with_index(1) do |article, i| %>
           <div class="column is-4">
             <div class="card">
-              第i位
+              第<%= i %>位
               <div class="card-image">
                <figure class="image is-4by3">
                 <%= link_to article_path(article) do %>
@@ -29,6 +29,8 @@
                 <div class="media">
                   <div class="media-content">
                     <div class="title"><%= article.title %></div>
+                    <i class="fas fa-heart"></i>
+                    <%= article.favorites.count %>
                   </div>
                 </div>
 
