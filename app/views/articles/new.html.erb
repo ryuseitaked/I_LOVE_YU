@@ -32,8 +32,26 @@
 
           <div class="field">
             <%= f.label :image, "写真", class: "label" %>
-            <%= f.attachment_field :image, class: "input" %>
+            <%= f.attachment_field :image, id: "image", class: "input" %>
+            <div class="item-image" >
+              <%= attachment_image_tag @article, :image, class: "card img-square", fallback: "no_image.png", size: "300x200" %>
+            </div>
           </div>
+          <script>
+          $(function() {
+             $('#image').on('change', function() {   //id = "image"の部分に変化があった場合、発火します
+               var selectedFile = this.files[0];     //selectedFileに、選択された画像を格納しますよと宣言しています
+               var fileReader = new FileReader();    //FileReaderを起動
+
+               fileReader.onload = function(event) {    //画像ファイルが文字列に変換成功したらイベントが発火
+                 var loadedImageUri = event.target.result; //loadedImageUriに、文字列化した画像ファイルを格納
+                  $('.img-square').attr('src', loadedImageUri); //no_imageの画像が表示されてますが、これを選択した画像に非同期で切り替える
+               };
+                                   
+               fileReader.readAsDataURL(selectedFile);  //HTML上で画像を表示するには画像を文字列に変換する必要があるため
+             });                                        //selectedFile(選択された画像)を base64 文字列に変換
+          });
+          </script>
 
           <div class="field">
             <%= f.label :postal_code, "郵便番号", class: "label" %><br>
