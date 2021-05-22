@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :articles do
     collection do
       get 'search'
+      get 'rank'
     end
     resource :favorites, only: [:create, :destroy]
     resources :reviews, only: [:index, :create]

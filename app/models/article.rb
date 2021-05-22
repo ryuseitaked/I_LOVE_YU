@@ -29,7 +29,7 @@ class Article < ApplicationRecord
   end
 
   # ユーザーが「いいね」を押しているかどうかを判別する
-  def favorited_by?(artcle)
+  def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
   end
 

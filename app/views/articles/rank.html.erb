@@ -14,9 +14,10 @@
     <section class="section">
       <div class="container">
         <div class="columns is-multiline">
-          <% @results.each do |article| %>
+          <% @all_ranks.each.with_index(1) do |article, i| %>
           <div class="column is-4">
             <div class="card">
+              第i位
               <div class="card-image">
                <figure class="image is-4by3">
                 <%= link_to article_path(article) do %>

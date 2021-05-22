@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
 
   #非ログインユーザーへのアクセス制限
-  before_action :authenticate_user!, except: [:index,:show]
+  before_action :authenticate_user!, except: [:index,:show, :search, :rank]
 
   #ワードで検索機能
   before_action :set_search, only: [:index, :search]
@@ -57,7 +57,12 @@ class ArticlesController < ApplicationController
   def search
     @results = @search.result
   end
-
+  
+  def rank
+     # イイね順にランキング形式で表示する
+    @all_ranks = Article.find(Favorite.group(:article_id).order('count(article_id) desc').limit(9).pluck(:article_id))
+  end
+  
   private
 
 
