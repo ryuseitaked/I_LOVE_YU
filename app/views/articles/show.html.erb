@@ -11,17 +11,17 @@
 <section class="section">
   <div class="container">
     <div class="columns is-centered">
-      <div class="column is-7">
+      <div class="column is-10">
         <div class="card">
           <div class="card-image">
             <figure class="image is-4by3">
-              <%= attachment_image_tag @article, :image, fallback: "no-image.png" %>
+              <%= attachment_image_tag @article, :image, fallback: "no-image_article.jpeg" %>
             </figure>
           </div>
           <div class="card-content">
             <div class="media">
               <div class="media-content">
-                施設名
+                <h4>施設名</h4>
                 <p class="title is-4"><%= @article.title %></p>
               </div>
               <!-- いいね機能 Ajax -->
@@ -32,14 +32,14 @@
             </div>
             <div class="media">
               <div class="media-content">
-                住所
+                <h4>住所</h4>
                 <p class="title is-4">〒<%=@article.postal_code %> <br>
                 <%= @article.address %></p>
               </div>
             </div>
             <div class="media">
               <div class="media-content">
-                電話番号
+                <h4>電話番号</h4>
                 <p class="title is-4"><%= @article.telephone_number %></p>
               </div>
             </div>
@@ -80,26 +80,16 @@
         </div>
       </div>
 
-      <div class="column is-4">
-        <article class="panel is-link">
-          <p class="panel-heading">
-            By <%= @article.user.name %>
-          </p>
-          <div class="panel-block">
-            <p class="control">
-              <%= @article.user.profile %>
-            </p>
-          </div>
-          <%= link_to user_path(@article.user), class: "panel-block" do %>
-            <span class="panel-icon">
-              <i class="fas fa-user" aria-hidden="true"></i>
-            </span>
-            <%= @article.user.name %> さんのページへ
-          <% end %>
-        </article>
-      </div>
 
-      <div id="map"></div>
+    </div>
+  </div>
+</section>
+
+<section class='map section'>
+  <div class='map container'>
+    <div class='columns is-centered'>
+      <div class='column is-7'>
+              <div id="map"></div>
 
 
       <script>
@@ -133,6 +123,7 @@
      <script async defer
         src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API'] %>&callback=initMap">
      </script>
+      </div>
     </div>
   </div>
 </section>

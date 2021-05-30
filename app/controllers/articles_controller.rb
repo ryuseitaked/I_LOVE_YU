@@ -1,10 +1,10 @@
 class ArticlesController < ApplicationController
 
   #非ログインユーザーへのアクセス制限
-  before_action :authenticate_user!, except: [:index,:show, :search, :rank]
+  before_action :authenticate_user!, except: [:index,:show, :search, :rank, :favorites]
 
   #ワードで検索機能
-  before_action :set_search, only: [:index, :search]
+  before_action :set_search
 
   def index
     @articles = Article.all

@@ -7,10 +7,13 @@ Rails.application.routes.draw do
 
   root 'articles#index'
 
-  resources :users, only: [:show,:edit,:update] do
+  resources :users, only: [:show,:edit,:update,] do
     member do
       get 'out'
       patch 'withdraw'
+    end
+    collection do
+      get 'favorites'
     end
   end
 

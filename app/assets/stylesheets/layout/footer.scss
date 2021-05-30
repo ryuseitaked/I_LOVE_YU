@@ -1,0 +1,25 @@
+.footerFixed{
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 60px;
+  box-sizing: border-box;
+}
+
+footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background-image: linear-gradient(to top, #dfe9f3 0%, white 100%);
+  text-align: center;
+  height: 70px;
+  padding-top: 20px;
+}
+
+.notification {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.alert {
+  color: #868686;
+}

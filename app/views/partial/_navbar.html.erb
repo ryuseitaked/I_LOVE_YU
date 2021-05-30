@@ -1,0 +1,97 @@
+<body>
+
+
+ <nav class="navbar is-warning">
+      <div class="navbar-brand">
+        <%= link_to articles_path, class: "navbar-item" do %>
+          <h1 class="title is-4" style="font-family: cursive;">I LOVE ♨️ゆ♨</h1>
+        <% end %>
+        <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+
+      <% if user_signed_in? %>
+        <div id="navbarExampleTransparentExample" class="navbar-menu">
+          <div class="navbar-item">
+            <%= link_to "♨️ゆ♨️", articles_path, class: "navbar-item button is-warning is-light" %>
+          </div>
+          <div class="navbar-item">
+            <%= link_to "♨施設登録♨️️", new_article_path, class: "navbar-item button is-warning is-light" %>
+          </div>
+          <div class="navbar-item">
+            <%= link_to "♨ランキング♨️️", rank_articles_path, class: "navbar-item button is-warning is-light" %>
+          </div>
+          <div class="navbar-item">
+            <%= link_to "♨周辺施設を探す♨️️", map_articles_path, class: "navbar-item button is-warning is-light" %>
+          </div>
+          <div class "navbar-item">
+            <div class="field has-addons">
+              <div class="control">
+                <!--検索フォーム-->
+                <%= search_form_for @search, url: search_articles_path do |f| %>
+                <%= f.search_field :title_cont, autofocus: true, :placeholder => "施設を検索", class: " input is-rounded " %>
+              </div>
+              <div class="control">
+                <%= f.submit '検索', class: 'button is-info' %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <div class="field is-grouped">
+                <p class="control">
+                  <%= link_to "マイページ", user_path(current_user), class: "button is-warning is-light" %>
+                </p>
+                <p class="control">
+                  <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "button is-warning is-light" %>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% else %>
+        <div id="navbarExampleTransparentExample" class="navbar-menu">
+          <div class="navbar-item">
+            <%= link_to "♨️ゆ♨️", articles_path, class: "navbar-item button is-warning is-light" %>
+          </div>
+          <div class="navbar-item">
+            <%= link_to "♨ランキング♨️️", rank_articles_path, class: "navbar-item button is-warning is-light" %>
+          </div>
+          <div class="navbar-item">
+            <%= link_to "♨周辺施設を探す♨️️", map_articles_path, class: "navbar-item button is-warning is-light" %>
+          </div>
+
+          <div class "navbar-item">
+            <div class="field has-addons">
+              <div class="control">
+                <!--検索フォーム-->
+                <%= search_form_for @search, url: search_articles_path do |f| %>
+                <%= f.search_field :title_cont, autofocus: true, :placeholder => "施設を検索", class: " input is-rounded " %>
+              </div>
+              <div class="control">
+                <%= f.submit '検索', class: 'button is-info' %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <div class="field is-grouped">
+                <p class="control">
+                  <%= link_to "ログイン", new_user_session_path, class: "button is-warning is-light" %>
+                </p>
+                <p class="control">
+                  <%= link_to "新規登録", new_user_registration_path, class: "button is-warning is-light" %>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </nav>

@@ -1,0 +1,11 @@
+    <!-- フラッシュメッセージ-->
+    <% if flash[:notice] %>
+    <div class="notification is-info">
+      <p class="notice"><%= notice %></p>
+    </div>
+    <% end %>
+    <% if flash[:alert]%>
+    <div class="notification is-debger">
+      <p class="alert"><%= alert %></p>
+    </div>
+    <% end %>

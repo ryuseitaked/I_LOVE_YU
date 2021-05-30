@@ -10,90 +10,16 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-
   <body>
-    <!-- フラッシュメッセージ-->
-    <% if flash[:notice] %>
-    <div class="notification is-info">
-      <p class="notice"><%= notice %></p>
-    </div>
-    <% end %>
-    <% if flash[:alert]%>
-    <div class="notification is-debger">
-      <p class="alert"><%= alert %></p>
-    </div>
-    <% end %>
-
- <nav class="navbar is-warning">
-      <div class="navbar-brand">
-        <%= link_to articles_path, class: "navbar-item" do %>
-          <h1 class="title is-4" style="font-family: cursive;">I LOVE ♨️ゆ♨</h1>
-        <% end %>
-        <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
-          <span></span>
-          <span></span>
-          <span></span>
+    <div class="footerFixed">
+      <div class="container-fluid">
+        <div class="main-content">
+        <%= render 'partial/navbar' %>
+          <%= render 'partial/flash' %>
+        <%= yield %>
         </div>
       </div>
-
-      <% if user_signed_in? %>
-        <div id="navbarExampleTransparentExample" class="navbar-menu">
-          <div class="navbar-item">
-            <%= link_to "♨️ゆ♨️", articles_path, class: "navbar-item button is-warning is-light" %>
-          </div>
-          <div class="navbar-item">
-            <%= link_to "♨施設登録♨️️", new_article_path, class: "navbar-item button is-warning is-light" %>
-          </div>
-          <div class="navbar-item">
-            <%= link_to "♨ランキング♨️️", rank_articles_path, class: "navbar-item button is-warning is-light" %>
-          </div>
-          <div class="navbar-item">
-            <%= link_to "♨周辺施設を探す♨️️", map_articles_path, class: "navbar-item button is-warning is-light" %>
-          </div>
-
-          <div class="navbar-end">
-            <div class="navbar-item">
-              <div class="field is-grouped">
-                <p class="control">
-                  <%= link_to "マイページ", user_path(current_user), class: "button is-warning is-light" %>
-                </p>
-                <p class="control">
-                  <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "button is-warning is-light" %>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      <% else %>
-        <div id="navbarExampleTransparentExample" class="navbar-menu">
-          <div class="navbar-item">
-            <%= link_to "♨️ゆ♨️", articles_path, class: "navbar-item button is-warning is-light" %>
-          </div>
-          <div class="navbar-item">
-            <%= link_to "♨ランキング♨️️", rank_articles_path, class: "navbar-item button is-warning is-light" %>
-          </div>
-          <div class="navbar-item">
-            <%= link_to "♨周辺施設を探す♨️️", map_articles_path, class: "navbar-item button is-warning is-light" %>
-          </div>
-
-          <div class="navbar-end">
-            <div class="navbar-item">
-              <div class="field is-grouped">
-                <p class="control">
-                  <%= link_to "ログイン", new_user_session_path, class: "button is-warning is-light" %>
-                </p>
-                <p class="control">
-                  <%= link_to "新規登録", new_user_registration_path, class: "button is-warning is-light" %>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    </nav>
-   <%= yield %>
-   <footer>
-    <span class="text-muted">©2021 I LOVE ♨️ゆ♨️ All Rights Reserved.</span>
-  </footer>
+      <%= render 'partial/footer' %>
+    </div>
   </body>
 </html>
